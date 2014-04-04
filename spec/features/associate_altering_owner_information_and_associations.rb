@@ -50,6 +50,7 @@ So that I can refer back to pertinent information
         click_on "Delete Owner"
         expect(page).to have_content("Owner Information Deleted")
         expect(Building.all.pluck(:owner_id)).to_not include (@id)
+        expect(Building.all.pluck(:street_address)).to include ("10 Lakeville Drive")
       end
 
   end
