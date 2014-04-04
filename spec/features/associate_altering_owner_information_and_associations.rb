@@ -11,6 +11,7 @@ So that I can refer back to pertinent information
   before(:each) do
     @owner = FactoryGirl.create(:owner)
     visit owner_path(@owner)
+    @id = @owner.id
   end
 
   context 'owner association' do
@@ -48,7 +49,7 @@ So that I can refer back to pertinent information
         click_on "Create Building"
         click_on "Delete Owner"
         expect(page).to have_content("Owner Information Deleted")
-        expect(@owner.buildings).to be_blank
+        expect(Building.all.pluck(:owner_id)).to_not include (@id)
       end
 
   end

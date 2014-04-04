@@ -25,7 +25,9 @@ class OwnersController < ApplicationController
   def destroy
     @owner = Owner.find(params[:id])
     @buildings = @owner.buildings
-    @buildings.delete_all
+    @buildings.each do |b|
+      b.update(owner: nil)
+    end
     @owner.destroy
     if @owner.destroy
       redirect_to new_owner_path, notice: 'Owner Information Deleted'
