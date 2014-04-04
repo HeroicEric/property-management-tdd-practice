@@ -1,0 +1,16 @@
+<%= simple_form_for(@owner) do |b| %>
+
+  <%= flash[:notice] if flash[:notice] %>
+  <ul>
+    <% @owner.errors.full_messages.each do |error| %>
+      <li> <%= error %> </li> 
+    <% end %>
+  </ul>
+
+  <%= b.input :first_name %>
+  <%= b.input :last_name %>
+  <%= b.input :email %>
+  <%= b.input :company_name %>
+  <%= b.button :submit %>
+
+<% end %>

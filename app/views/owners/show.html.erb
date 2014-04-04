@@ -1,0 +1,7 @@
+<%= @buildings.each do |build| %>
+  <%= build %>
+<% end %>
+
+<%= link_to "Delete Owner", @owner, method: :delete %>
+
+<%= render 'building' %>
