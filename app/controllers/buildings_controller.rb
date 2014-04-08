@@ -6,20 +6,16 @@ class BuildingsController < ApplicationController
 
   def create
     @owner = Owner.find(params[:owner_id])
-    @building = Building.new(building_params)
-    if @building.relationship == true
-      @building.owner = @owner
-    end
-
+    @building = @owner.buildings.build(building_params)
 
     if @building.save
       redirect_to owner_path(@owner), notice: 'Building Information Added to Listing'
     else
-      redirect_to owner_path(@owner), notice: 'Invalid Information'
+      flash.now[:alert] = 'Invalid Information'
+      render 'owners/show'
     end
 
   end
-
 
   private
 

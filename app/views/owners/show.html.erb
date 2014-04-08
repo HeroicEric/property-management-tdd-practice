@@ -1,7 +1,11 @@
-<%= @buildings.each do |build| %>
-  <%= build %>
-<% end %>
-
 <%= link_to "Delete Owner", @owner, method: :delete %>
 
-<%= render 'building' %>
+<h3>Add a Building</h3>
+<%= render 'buildings/form', owner: @owner, building: @building %>
+
+<h3>Buildings</h3>
+<ul>
+  <% @owner.buildings.each do |building| %>
+    <li><%= "#{building.street_address}, #{building.city}, #{building.state}" %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,41 @@
+<%= form_for [owner, building] do |b| %>
+
+  <%= flash[:notice] if flash[:notice] %>
+
+  <% if @building.errors.full_messages.count > 0 %>
+    <ul>
+      <% @building.errors.full_messages.each do |error| %>
+        <li> <%= error %> </li> 
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= b.label :street_address %>
+    <%= b.text_field :street_address %>
+  </div>
+
+  <div>
+    <%= b.label :state %>
+    <%= b.text_field :state %>
+  </div>
+
+  <div>
+    <%= b.label :city %>
+    <%= b.text_field :city %>
+  </div>
+
+  <div>
+    <%= b.label :postal_code %>
+    <%= b.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= b.label :description %>
+    <%= b.text_field :description %>
+  </div>
+
+  <div>
+    <%= b.submit %>
+  </div>
+<% end %>

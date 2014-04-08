@@ -9,17 +9,15 @@ class OwnersController < ApplicationController
     @owner = Owner.new(owner_params)
 
     if @owner.save
-      redirect_to @owner, notice: "Owner Information Created"
+      redirect_to new_owner_path, notice: "Owner Information Created"
     else
       render :new
     end
-
   end
 
   def show
     @owner = Owner.find(params[:id])
     @building = Building.new
-    @buildings = @owner.buildings(&:to_hash)
   end
 
   def destroy
