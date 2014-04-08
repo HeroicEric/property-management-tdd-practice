@@ -1,6 +1,6 @@
 class Owner < ActiveRecord::Base
 
-  has_many :buildings
+  has_many :buildings, dependent: :nullify
 
   validates :first_name, presence: true, format: { with: /[a-z]+/i }
   validates :last_name, presence: true, format: { with: /[a-z]+/i }
