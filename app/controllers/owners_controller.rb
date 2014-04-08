@@ -11,6 +11,7 @@ class OwnersController < ApplicationController
     if @owner.save
       redirect_to new_owner_path, notice: "Owner Information Created"
     else
+      flash.now[:alert] = "There were some errors"
       render :new
     end
   end
